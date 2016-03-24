@@ -1,5 +1,3 @@
-package completedClasses;
-
 public class GPA_Calculator
 {
     //class members---------------------------
