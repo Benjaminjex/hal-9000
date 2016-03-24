@@ -1,8 +1,3 @@
-package BallGame;
-/*
-   Benjamin Jex
-   Ball v0
-   */
 public class BallController
 {
     //class members---------------------------    
