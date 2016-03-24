@@ -1,4 +1,3 @@
-package completedClasses;
 /*Create the necessary methods.
  *Menu  Option 1 -- Demonstrate if-else
  *      option 2 -- Demonstrate a while-loop
