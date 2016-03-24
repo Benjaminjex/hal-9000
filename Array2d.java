@@ -1,8 +1,6 @@
-package completedClasses;
 public class Array2d
 {
-    //class members---------------------------
-    //private
+    //variable declaration
     int numRows, numColumns;
     String [][] matrix;
 
@@ -15,7 +13,7 @@ public class Array2d
     //class constructor
     public Array2d()
     {
-        output("\u000c"); //clears output terinal before execution
+        output("\u000c"); //clears output terminal before execution
 
         //call methods
         fillMatrix();
