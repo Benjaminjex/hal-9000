@@ -1,6 +1,3 @@
-package BallGame;
-
-
 /**
  * Write a description of class TempDriver here.
  * 
