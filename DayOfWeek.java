@@ -1,5 +1,3 @@
-package completedClasses.calendarContent;
-
 public class DayOfWeek
 {
     //class members
