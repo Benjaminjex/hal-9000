@@ -1,5 +1,3 @@
-package completedClasses;
-
 //Computer Programming, 9-30-15.
 public class PrimeNumbers
 {
