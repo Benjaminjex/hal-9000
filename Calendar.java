@@ -1,4 +1,3 @@
-package completedClasses.calendarContent;
 public class Calendar
 {
     //class members
