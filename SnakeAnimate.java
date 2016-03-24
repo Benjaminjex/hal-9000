@@ -1,6 +1,5 @@
 //Implement this code as a Venture EasyIO class.
 //Improve it.
-package completedClasses;
 public class SnakeAnimate
 {
     //class members---------------------------
