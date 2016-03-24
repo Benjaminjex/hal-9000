@@ -1,5 +1,3 @@
-package completedClasses;
-
 public class SecretMsg
 {
     //class members---------------------------
