@@ -1,5 +1,3 @@
-package completedClasses;
-
 public class Array2dPractice
 {
     //class members---------------------------
