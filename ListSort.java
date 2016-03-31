@@ -1,5 +1,3 @@
-
-
 public class ListSort
 {
     //class members---------------------------
@@ -54,9 +52,33 @@ public class ListSort
     
     public void sort()
     {
+        boolean sorted = false;
+
+        while (!sorted)
+        {
+            sorted = true;
+            for(int i = 0; i < listSize-1; i++)
+            {
+                if (numList[i] > numList[i+1])
+                {
+                    int temp;
+                    int first;
+                    int second;
         
+                    temp = numList[i];
+                    numList[i] = numList[i+1];
+                    numList[i+1] = temp;
+                    sorted = false;
+                }
+            }
+        }
     }
 
+    public void swap(int first, int second)    
+    {
+        
+    }
+    
     public void displayList()
     {
         output("\n\nHere is the list...\n");
