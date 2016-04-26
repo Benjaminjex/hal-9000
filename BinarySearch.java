@@ -138,7 +138,7 @@ public class BinarySearch
     {
         sortList();
         boolean exit = false, found = false;
-        int bott = listSize - 1, top = 0, loc;
+        int bott = listSize, top = 0, loc;
         int sK, ex1t;
         
         
@@ -152,18 +152,19 @@ public class BinarySearch
             loc = ((top + bott)/2);
             if (numList[loc] == sK)
             {
-                output(sK + " found at position " + loc);
-                input("\n\npress <return> to continue...");
                 found = true;
             }
-            else if (numList[loc] < sK) top = loc - 1;
-            else if (numList[loc] > sK) bott = loc + 1;
-            else if (top>=bott) {
-                input("Not found!\n\n press <return> to continue...");
+            else if (numList[loc] < sK) top = loc;
+            else if (numList[loc] > sK) bott = loc;
+            else if ((top >= bott)||(bott<=top)) {
                 found = true;
             }
             else output("Broke");
         }
+        if (found)
+            output(sK + " found at position " + loc);
+        else
+            output("Not found!");
     }
     
     
