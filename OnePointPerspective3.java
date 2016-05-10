@@ -253,8 +253,9 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
         public void paintComponent( Graphics g ) 
         {
             // writing over the background to give animation effect
-            g.setColor(Color.WHITE);
-            g.fillRect(0, 0, this.getWidth(), this.getHeight());  
+            Image img = new ImageIcon("Earthrise.jpg").getImage();
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            
             g.setColor(Color.BLACK);
 
             //change font and size
@@ -323,16 +324,20 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
             g.drawLine(xCoord[4], yCoord[4], xCoord[5], yCoord[5]);
             g.drawLine(xCoord[5], yCoord[5], xCoord[6], yCoord[6]);
             g.drawLine(xCoord[6], yCoord[6], xCoord[7], yCoord[7]);
-            g.drawLine(xCoord[7], yCoord[7], xCoord[4], yCoord[4]);
+            g.drawLine(xCoord[7], yCoord[7], xCoord[4], yCoord[4]);            
             
             for(int i = 0; i < numVertices/2; i++)
             {
                 g.drawLine(xCoord[i], yCoord[i], xCoord[i+4], yCoord[i+4]);
             }
             
+            g.setColor(Color.YELLOW);
+            g.fillRect(xCoord[0], xCoord[3]);  
+            
             g.setColor(Color.BLUE);
             g.drawString("("+ (xCoord[0]-xCenter) +","+ (yCenter-yCoord[0]) +")", xCoord[0]+3, yCoord[0]+30);
         
+
         }
         
         
