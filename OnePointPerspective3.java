@@ -147,9 +147,9 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
                     yCoord[i] = yCenter - yCoord[i];
                 }
                 xDirection = 0; yDirection = 0;
-           }
+            }
             
-           if(k.getKeyCode() == KeyEvent.VK_N) 
+            if(k.getKeyCode() == KeyEvent.VK_N) 
             { 
                 int translateX, translateY;
                 
@@ -253,15 +253,19 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
         public void paintComponent( Graphics g ) 
         {
             // writing over the background to give animation effect
-            Image img = new ImageIcon("Earthrise.jpg").getImage();
-            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-            
+            //Image img;
+            //img = new ImageIcon("Earthrise.jpg").getImage();
+            //g.drawImage(img, getWidth(), getHeight(), this);
+            g.fillRect(0, 0, this.getWidth(), this.getHeight());  
             g.setColor(Color.BLACK);
 
             //change font and size
             int fontSize = 20;
             Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
             g.setFont(f);
+            
+            Image img = new ImageIcon("Earthrise.JPG").getImage();
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             
             //x-axis
             drawXAxis(g);
@@ -302,6 +306,8 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
         public void drawSolid(Graphics g)
         {
             int translateX, translateY;
+            translateX = 0;
+            translateY = 0;
             
             //pf = 0.6;
             for (int i = 0; i < numVertices/2; i++)
@@ -316,6 +322,232 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
                 yCoord[i+4] = yCenter - yCoord[i+4];
             }
             
+            boolean firstQuad, secondQuad, thirdQuad, fourthQuad;
+            /*
+            firstQuad = false; secondQuad = false; thirdQuad = false; fourthQuad = false;
+            while(translateX > 1 && translateY > 1)
+            {
+                firstQuad = true;
+            }
+            while(translateX < -1 && translateY > 1)
+            {
+                secondQuad = true;
+            }
+            while(translateX < -1 && translateY < -1)
+            {
+                thirdQuad = true;
+            }
+            while(translateX > 1 && translateY < -1)
+            {
+                fourthQuad = true;
+            }
+            */
+            firstQuad = translateX > 1 && translateY > 1;
+            secondQuad = translateX < -1 && translateY > 1;
+            thirdQuad = translateX < -1 && translateY < -1;
+            fourthQuad = translateX > 1 && translateY < -1;
+            
+            if (firstQuad = true)
+            {
+                int [] leftX, leftY;
+                leftX = new int[4];
+                leftY = new int[4];
+                g.setColor(Color.CYAN);
+                leftX[0] = xCoord[0]; leftY [0] = yCoord[0];
+                leftX[1] = xCoord[1]; leftY [1] = yCoord[1];
+                leftX[2] = xCoord[5]; leftY [2] = yCoord[5];
+                leftX[3] = xCoord[4]; leftY [3] = yCoord[4];
+                g.fillPolygon(leftX, leftY, 4);
+                
+                int [] bottomX, bottomY;
+                bottomX = new int[4];
+                bottomY = new int[4];
+                g.setColor(Color.YELLOW);
+                bottomX[0] = xCoord[1]; bottomY[0] = yCoord[1];
+                bottomX[1] = xCoord[5]; bottomY[1] = yCoord[5];
+                bottomX[2] = xCoord[6]; bottomY[2] = yCoord[6];
+                bottomX[3] = xCoord[2]; bottomY[3] = yCoord[2];
+                g.fillPolygon(bottomX, bottomY, 4);
+                
+                int [] frontX, frontY;
+                frontX = new int[4];
+                frontY = new int[4];
+                g.setColor(Color.GREEN);
+                frontX[0] = xCoord[0]; frontY[0] = yCoord[0];
+                frontX[1] = xCoord[3]; frontY[1] = yCoord[3];
+                frontX[2] = xCoord[2]; frontY[2] = yCoord[2];
+                frontX[3] = xCoord[1]; frontY[3] = yCoord[1];
+                g.fillPolygon(frontX, frontY, 4);
+                
+                firstQuad = false;
+            }
+            
+            if (secondQuad = true)
+            {
+                int [] rightX, rightY;
+                rightX = new int[4];
+                rightY = new int[4];
+                g.setColor(Color.CYAN);
+                rightX[0] = xCoord[3]; rightY[0] = yCoord[3];
+                rightX[1] = xCoord[2]; rightY[1] = yCoord[2];
+                rightX[2] = xCoord[6]; rightY[2] = yCoord[6];
+                rightX[3] = xCoord[7]; rightY[3] = yCoord[7];
+                g.fillPolygon(rightX, rightY, 4);
+                
+                int [] bottomX, bottomY;
+                bottomX = new int[4];
+                bottomY = new int[4];
+                g.setColor(Color.YELLOW);
+                bottomX[0] = xCoord[1]; bottomY[0] = yCoord[1];
+                bottomX[1] = xCoord[5]; bottomY[1] = yCoord[5];
+                bottomX[2] = xCoord[6]; bottomY[2] = yCoord[6];
+                bottomX[3] = xCoord[2]; bottomY[3] = yCoord[2];
+                g.fillPolygon(bottomX, bottomY, 4);
+                
+                int [] frontX, frontY;
+                frontX = new int[4];
+                frontY = new int[4];
+                g.setColor(Color.GREEN);
+                frontX[0] = xCoord[0]; frontY[0] = yCoord[0];
+                frontX[1] = xCoord[3]; frontY[1] = yCoord[3];
+                frontX[2] = xCoord[2]; frontY[2] = yCoord[2];
+                frontX[3] = xCoord[1]; frontY[3] = yCoord[1];
+                g.fillPolygon(frontX, frontY, 4);
+                
+                secondQuad = false;
+            }
+            
+            if (thirdQuad = true)
+            {   
+                int [] topX, topY;
+                topX = new int[4];
+                topY = new int[4];
+                g.setColor(Color.YELLOW);
+                topX[0] = xCoord[0]; topY[0] = yCoord[0];
+                topX[1] = xCoord[4]; topY[1] = yCoord[4];
+                topX[2] = xCoord[7]; topY[2] = yCoord[7];
+                topX[3] = xCoord[3]; topY[3] = yCoord[3];
+                g.fillPolygon(topX, topY, 4);
+                
+                int [] rightX, rightY;
+                rightX = new int[4];
+                rightY = new int[4];
+                g.setColor(Color.CYAN);
+                rightX[0] = xCoord[3]; rightY[0] = yCoord[3];
+                rightX[1] = xCoord[2]; rightY[1] = yCoord[2];
+                rightX[2] = xCoord[6]; rightY[2] = yCoord[6];
+                rightX[3] = xCoord[7]; rightY[3] = yCoord[7];
+                g.fillPolygon(rightX, rightY, 4);
+                
+                int [] frontX, frontY;
+                frontX = new int[4];
+                frontY = new int[4];
+                g.setColor(Color.GREEN);
+                frontX[0] = xCoord[0]; frontY[0] = yCoord[0];
+                frontX[1] = xCoord[3]; frontY[1] = yCoord[3];
+                frontX[2] = xCoord[2]; frontY[2] = yCoord[2];
+                frontX[3] = xCoord[1]; frontY[3] = yCoord[1];
+                g.fillPolygon(frontX, frontY, 4);
+                
+                thirdQuad = false;
+            }
+            
+            if (fourthQuad = true)
+            {
+                int [] topX, topY;
+                topX = new int[4];
+                topY = new int[4];
+                g.setColor(Color.YELLOW);
+                topX[0] = xCoord[0]; topY[0] = yCoord[0];
+                topX[1] = xCoord[4]; topY[1] = yCoord[4];
+                topX[2] = xCoord[7]; topY[2] = yCoord[7];
+                topX[3] = xCoord[3]; topY[3] = yCoord[3];
+                g.fillPolygon(topX, topY, 4);
+                
+                int [] leftX, leftY;
+                leftX = new int[4];
+                leftY = new int[4];
+                g.setColor(Color.CYAN);
+                leftX[0] = xCoord[0]; leftY [0] = yCoord[0];
+                leftX[1] = xCoord[1]; leftY [1] = yCoord[1];
+                leftX[2] = xCoord[5]; leftY [2] = yCoord[5];
+                leftX[3] = xCoord[4]; leftY [3] = yCoord[4];
+                g.fillPolygon(leftX, leftY, 4);
+                
+                int [] frontX, frontY;
+                frontX = new int[4];
+                frontY = new int[4];
+                g.setColor(Color.GREEN);
+                frontX[0] = xCoord[0]; frontY[0] = yCoord[0];
+                frontX[1] = xCoord[3]; frontY[1] = yCoord[3];
+                frontX[2] = xCoord[2]; frontY[2] = yCoord[2];
+                frontX[3] = xCoord[1]; frontY[3] = yCoord[1];
+                g.fillPolygon(frontX, frontY, 4);
+                
+                fourthQuad = false;
+            }
+            /*
+            int [] backX, backY;
+            backX = new int[4];
+            backY = new int[4];
+            g.setColor(Color.GREEN);
+            backX[0] = xCoord[4]; backY[0] = yCoord[4];
+            backX[1] = xCoord[5]; backY[1] = yCoord[5];
+            backX[2] = xCoord[6]; backY[2] = yCoord[6];
+            backX[3] = xCoord[7]; backY[3] = yCoord[7];
+            g.fillPolygon(backX, backY, 4);
+            
+            int [] leftX, leftY;
+            leftX = new int[4];
+            leftY = new int[4];
+            g.setColor(Color.CYAN);
+            leftX[0] = xCoord[0]; leftY [0] = yCoord[0];
+            leftX[1] = xCoord[1]; leftY [1] = yCoord[1];
+            leftX[2] = xCoord[5]; leftY [2] = yCoord[5];
+            leftX[3] = xCoord[4]; leftY [3] = yCoord[4];
+            g.fillPolygon(leftX, leftY, 4);
+            
+            int [] rightX, rightY;
+            rightX = new int[4];
+            rightY = new int[4];
+            g.setColor(Color.CYAN);
+            rightX[0] = xCoord[3]; rightY[0] = yCoord[3];
+            rightX[1] = xCoord[2]; rightY[1] = yCoord[2];
+            rightX[2] = xCoord[6]; rightY[2] = yCoord[6];
+            rightX[3] = xCoord[7]; rightY[3] = yCoord[7];
+            g.fillPolygon(rightX, rightY, 4);
+            
+            int [] topX, topY;
+            topX = new int[4];
+            topY = new int[4];
+            g.setColor(Color.YELLOW);
+            topX[0] = xCoord[0]; topY[0] = yCoord[0];
+            topX[1] = xCoord[4]; topY[1] = yCoord[4];
+            topX[2] = xCoord[7]; topY[2] = yCoord[7];
+            topX[3] = xCoord[3]; topY[3] = yCoord[3];
+            g.fillPolygon(topX, topY, 4);
+            
+            int [] bottomX, bottomY;
+            bottomX = new int[4];
+            bottomY = new int[4];
+            g.setColor(Color.YELLOW);
+            bottomX[0] = xCoord[1]; bottomY[0] = yCoord[1];
+            bottomX[1] = xCoord[5]; bottomY[1] = yCoord[5];
+            bottomX[2] = xCoord[6]; bottomY[2] = yCoord[6];
+            bottomX[3] = xCoord[2]; bottomY[3] = yCoord[2];
+            g.fillPolygon(bottomX, bottomY, 4);
+            
+            int [] frontX, frontY;
+            frontX = new int[4];
+            frontY = new int[4];
+            g.setColor(Color.GREEN);
+            frontX[0] = xCoord[0]; frontY[0] = yCoord[0];
+            frontX[1] = xCoord[3]; frontY[1] = yCoord[3];
+            frontX[2] = xCoord[2]; frontY[2] = yCoord[2];
+            frontX[3] = xCoord[1]; frontY[3] = yCoord[1];
+            g.fillPolygon(frontX, frontY, 4);
+            */
+            
             g.setColor(Color.BLUE);
             g.drawLine(xCoord[0], yCoord[0], xCoord[1], yCoord[1]);
             g.drawLine(xCoord[1], yCoord[1], xCoord[2], yCoord[2]);
@@ -324,20 +556,16 @@ public class OnePointPerspective3 extends JFrame implements KeyListener
             g.drawLine(xCoord[4], yCoord[4], xCoord[5], yCoord[5]);
             g.drawLine(xCoord[5], yCoord[5], xCoord[6], yCoord[6]);
             g.drawLine(xCoord[6], yCoord[6], xCoord[7], yCoord[7]);
-            g.drawLine(xCoord[7], yCoord[7], xCoord[4], yCoord[4]);            
+            g.drawLine(xCoord[7], yCoord[7], xCoord[4], yCoord[4]);
             
             for(int i = 0; i < numVertices/2; i++)
             {
                 g.drawLine(xCoord[i], yCoord[i], xCoord[i+4], yCoord[i+4]);
             }
             
-            g.setColor(Color.YELLOW);
-            g.fillRect(xCoord[0], xCoord[3]);  
-            
             g.setColor(Color.BLUE);
             g.drawString("("+ (xCoord[0]-xCenter) +","+ (yCenter-yCoord[0]) +")", xCoord[0]+3, yCoord[0]+30);
         
-
         }
         
         

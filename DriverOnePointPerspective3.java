@@ -1,0 +1,7 @@
+public class DriverOnePointPerspective3
+{
+    public static void main(String[] args)
+    {
+        new OnePointPerspective3();
+    } 
+} 
